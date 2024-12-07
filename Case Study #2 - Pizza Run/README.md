@@ -14,6 +14,7 @@ This repository contains my solutions and analysis for **Case Study #2: Pizza Ru
 - [Data Cleaning Approach](#data-cleaning-approach)
 - [Pizza Metrics Solutions](#pizza-metrics-solutions)
 - [Runner and Customer Experience Solutions](#runner-and-customer-experience-solutions)
+- [Ingredient Optimization Solutions](#ingredient-optimization-solutions)
 - [Future Updates](#future-updates)
 
 
@@ -373,11 +374,66 @@ SELECT
     ROUND((CAST(num_successful_orders AS FLOAT) * 100) / num_orders, 2) AS percentage_successful_orders
 FROM cte;
 ```
+---
+
+## 🍕 Ingredient Optimization Solutions
+
+### Overview
+
+The Ingredient Optimization section was one of the most complex and rewarding parts of this case study. It required thorough data cleaning, normalization, and advanced SQL techniques such as Common Table Expressions (CTEs) and dynamic string aggregation. This section focuses on optimizing pizza ingredients by handling extras and exclusions, normalizing data, and generating dynamic insights.
+
+### Key Challenges Solved
+
+#### 1. Data Normalization
+- Initially, the `extras` and `exclusions` columns contained comma-separated values.
+- These columns were normalized into separate rows in the `Cleaned_Customer_Orders` table for better usability and query efficiency.
+
+#### 2. Dynamic Ingredient Descriptions
+- Created order items dynamically, such as:
+  - Meat Lovers
+  - Meat Lovers - Exclude Cheese
+  - Meat Lovers - Extra Bacon
+  - Vegetarian: 2x Bacon, Cheese
+
+#### 3. Ingredient Frequencies
+- Calculated the total usage of each ingredient across all delivered pizzas, accounting for extras and excluding ingredients listed in exclusions.
+
+#### 4. Dynamic String Formatting
+- Generated ingredient lists dynamically, prefixing repeated ingredients with quantities like `2x Bacon`.
+
+### Data Cleaning Highlights
+Proper normalization was crucial for these queries. Initially, the data in `extras` and `exclusions` was not clean or normalized. The normalized tables (`Cleaned_Customer_Orders` and `#split_pizza_recipes`) were essential for simplifying complex queries. If you’re working on similar challenges, ensure you’ve cleaned and normalized your data upfront.
+
+### Concepts Applied
+- **CTEs (Common Table Expressions):** Modularized the queries for better readability and reusability.
+- **STRING_AGG:** Used to generate dynamic, comma-separated ingredient lists.
+- **CASE Statements:** Handled conditional logic for marking extras and excluding ingredients dynamically.
+
+### 📝 Notes for Solvers
+
+#### Understand CTEs:
+- This section heavily uses **CTEs (Common Table Expressions)** for clarity and modularity. If you’re unfamiliar with them, take the time to learn as they simplify complex query logic significantly.
+
+#### Normalize Your Data First:
+- **Normalized tables** make querying much easier. For example:
+  - The `extras` and `exclusions` columns were transformed from `1,2,3` into individual rows for better usability.
+
+#### Dynamic Querying:
+- The queries here rely on **string functions** like `STRING_AGG` to dynamically generate outputs such as:
+  - `Meat Lovers - Exclude Cheese - Extra Bacon, Mushrooms`.
+
+#### Complex Aggregations:
+- Combining base quantities with extras while excluding specific ingredients requires careful **query structuring**.
+
+  
+## 📂 Solution File
+The solutions for Ingredient Optimization have been added to the existing file that contains answers to other sections of the challenge. Since the queries for this section are lengthy, I’ve chosen not to repeat them here. You can find the full solutions in the uploaded file.
+
 
 
 ---
 ## 🔜 Future Updates
-- I have uploaded solutions for **Pizza Metrics** and **Runner and Customer Experience** sections, and I will be uploading solutions for **Ingredient Optimization**, **Pricing and Ratings** and bonus sections in the coming weeks.
+- I have uploaded solutions for **Pizza Metrics**, **Runner and Customer Experience**, **Ingredient Optimization** sections, and I will be uploading solutions for **Pricing and Ratings** and bonus sections in the coming weeks.
 - Once all solutions are completed, I will share a comprehensive write-up on Medium, explaining my approach and findings.
 
 Stay tuned for updates!
