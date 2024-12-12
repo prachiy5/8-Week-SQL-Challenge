@@ -393,9 +393,172 @@ and year(later_date)=2020
 
 ---
 
+## C. Challenge Payment Question
+
+The Foodie-Fi team tasked us with creating a payments table for the year 2020. The table includes details of payments made by customers based on their subscription plans and adheres to the following requirements:
+
+1. **Monthly Payments**: Payments occur on the same day of the month as the subscription's `start_date`.
+2. **Upgrades**: 
+   - From `basic monthly` to `pro plans`, payments for the current month are reduced by the amount already paid.
+   - From `pro monthly` to `pro annual`, payments occur at the end of the billing period and start at the end of the month.
+3. **Churn**: Once a customer churns, no further payments are recorded.
+
+### Steps Taken to Create the Payments Table
+1. **Create the `payments_2020` Table**: A new table was created with the required fields: `payment_id`, `customer_id`, `plan_id`, `plan_name`, `payment_date`, `amount`, and `payment_order`.
+
+2. **Base Data Preparation**: 
+   - A CTE was used to join `subscriptions` and `plans` to gather details like `start_date`, `next_date`, and `amount`.
+   - `trial` and `churn` plans were filtered out.
+
+3. **Recursive Payment Generation**:
+   - A recursive CTE generated monthly payments, stopping one month before the `next_date` or at the end of 2020.
+
+4. **Insert Payments into the Table**:
+   - Payments were inserted into the `payments_2020` table with proper ranking for `payment_order`.
+
+5. **Output Validation**:
+   - A query verified the correctness of the data.
+
+---
+```sql
+
+CREATE TABLE payments_2020 (
+    payment_id INT IDENTITY(1,1) PRIMARY KEY,
+    customer_id INT NOT NULL,
+    plan_id INT NOT NULL,
+    plan_name NVARCHAR(50) NOT NULL,
+    payment_date DATE NOT NULL,
+    amount DECIMAL(10,2) NOT NULL,
+    payment_order INT NOT NULL
+);
+
+
+WITH join_table AS
+(
+    -- Create a base table with start and next dates for subscriptions
+    SELECT 
+        s.customer_id,
+        s.plan_id,
+        p.plan_name,
+        s.start_date AS payment_date,
+        s.start_date,
+        LEAD(s.start_date, 1) OVER (PARTITION BY s.customer_id ORDER BY s.start_date) AS next_date,
+        p.price AS amount
+    FROM subscriptions s
+    LEFT JOIN plans p 
+        ON p.plan_id = s.plan_id
+),
+
+new_join AS
+(
+    
+    SELECT 
+        customer_id,
+        plan_id,
+        plan_name,
+        payment_date,
+        start_date,
+        CASE WHEN next_date IS NULL OR next_date > '2020-12-31' THEN '2020-12-31' ELSE next_date END AS next_date,
+        amount
+    FROM join_table
+    WHERE plan_name NOT IN ('trial', 'churn')
+),
+
+new_join1 AS
+(
+    
+    SELECT 
+        customer_id,
+        plan_id,
+        plan_name,
+        payment_date,
+        start_date,
+        next_date,
+        DATEADD(MONTH, -1, next_date) AS next_date1,
+        amount
+    FROM new_join
+),
+
+Date_CTE AS
+(
+    
+    SELECT 
+        customer_id,
+        plan_id,
+        plan_name,
+        start_date,
+        payment_date = (SELECT TOP 1 start_date FROM new_join1 WHERE customer_id = a.customer_id AND plan_id = a.plan_id),
+        next_date, 
+        next_date1,
+        amount
+    FROM new_join1 a
+
+    UNION ALL 
+
+    SELECT 
+        customer_id,
+        plan_id,
+        plan_name,
+        start_date, 
+        DATEADD(MONTH, 1, payment_date) AS payment_date,
+        next_date, 
+        next_date1,
+        amount
+    FROM Date_CTE b
+    WHERE payment_date < next_date1 AND plan_id != 3
+)
+
+
+INSERT INTO payments_2020 (customer_id, plan_id, plan_name, payment_date, amount, payment_order)
+SELECT 
+    customer_id,
+    plan_id,
+    plan_name,
+    payment_date,
+    amount,
+    RANK() OVER (PARTITION BY customer_id, plan_id ORDER BY customer_id, payment_date) AS payment_order
+FROM Date_CTE
+WHERE YEAR(payment_date) = 2020
+ORDER BY customer_id, plan_id, payment_date;
+
+
+SELECT *
+FROM payments_2020
+ORDER BY customer_id, plan_id, payment_date;
+```
+
+
+## 📋 Sample Output
+
+The table below shows a sample of the `payments_2020` table (15 records out of 1000):
+
+| payment_id | customer_id | plan_id | plan_name       | payment_date | amount  | payment_order |
+|------------|-------------|---------|-----------------|--------------|---------|---------------|
+| 1          | 1           | 1       | basic monthly   | 2020-08-08   | 9.90    | 1             |
+| 2          | 1           | 1       | basic monthly   | 2020-09-08   | 9.90    | 2             |
+| 3          | 1           | 1       | basic monthly   | 2020-10-08   | 9.90    | 3             |
+| 4          | 1           | 1       | basic monthly   | 2020-11-08   | 9.90    | 4             |
+| 5          | 1           | 1       | basic monthly   | 2020-12-08   | 9.90    | 5             |
+| 6          | 2           | 3       | pro annual      | 2020-09-27   | 199.00  | 1             |
+| 7          | 3           | 1       | basic monthly   | 2020-01-20   | 9.90    | 1             |
+| 8          | 3           | 1       | basic monthly   | 2020-02-20   | 9.90    | 2             |
+| 9          | 3           | 1       | basic monthly   | 2020-03-20   | 9.90    | 3             |
+| 10         | 3           | 1       | basic monthly   | 2020-04-20   | 9.90    | 4             |
+| 11         | 3           | 1       | basic monthly   | 2020-05-20   | 9.90    | 5             |
+| 12         | 3           | 1       | basic monthly   | 2020-06-20   | 9.90    | 6             |
+| 13         | 3           | 1       | basic monthly   | 2020-07-20   | 9.90    | 7             |
+| 14         | 3           | 1       | basic monthly   | 2020-08-20   | 9.90    | 8             |
+
+---
+
+### Key Takeaways
+- **Monthly Payments**: Payments for monthly plans are made on the same day of the month as the `start_date`.
+- **Upgrades**: Handled according to business rules, with adjustments for overlapping payments.
+- **Churn**: Payments stop as soon as a customer churns.
+
 ## 🔜 Future Updates
 
-I’ve uploaded solutions for the **Customer Journey**, **Data Analysis**. Next, I will be uploading solutions for **Challenge Payment** sections and  I’ll also add:
+I’ve uploaded solutions for the **Customer Journey**, **Data Analysis** and  **Challenge Payment** section. Next, I will be uploading solutions for Bonus sections and  I’ll also add:
 - A detailed write-up of my approach to solving these problems.
 
 Stay tuned for updates!
