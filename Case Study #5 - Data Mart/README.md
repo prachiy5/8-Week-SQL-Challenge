@@ -83,6 +83,7 @@ Ready to dive in? Check out the solution files for each part:
 - [Part 1: Data Cleansing Steps](https://github.com/prachiy5/8-Week-SQL-Challenge/tree/main/Case%20Study%20%235%20-%20Data%20Mart/Data%20Cleaning)
 - [Part 2: Data Exploration](https://github.com/prachiy5/8-Week-SQL-Challenge/tree/main/Case%20Study%20%235%20-%20Data%20Mart/Data%20Exploration)
 - [Part 3: Before & After Analysis](https://github.com/prachiy5/8-Week-SQL-Challenge/tree/main/Case%20Study%20%235%20-%20Data%20Mart/Before%20%26%20After%20Analysis)
+- [Part 4: Bonus](https://github.com/prachiy5/8-Week-SQL-Challenge/tree/main/Case%20Study%20%235%20-%20Data%20Mart/Bonus)
 
 
 
