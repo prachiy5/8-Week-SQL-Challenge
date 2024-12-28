@@ -37,7 +37,9 @@ Hello visitors,
 I am currently working on these case studies, so some solutions may not yet be available. As I progress through each challenge, I will upload the solutions along with detailed explanations, thought processes, and insights. 
 
 
-If you have any questions or need help with your own solutions, feel free to reach out. I’m happy to support you on your learning journey! You can connect with me on LinkedIn or email me at: Yadavprachi5898@gmail.com
+If you have questions or need help with your solutions, feel free to reach out!  
+Connect with me on [LinkedIn](https://www.linkedin.com/in/prachi-yadav-559222189/) or email me at: **Yadavprachi5898@gmail.com**.
+
 ---
 
 ### Acknowledgment
