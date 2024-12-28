@@ -225,7 +225,40 @@ FROM YearlySalesWithTotals;
 
 ---
 
-## 8. **Can we use the avg_transaction column to find the average transaction size for each year for Retail vs Shopify?**
+##8. **Can we use the avg_transaction column to find the average transaction size for each year for Retail vs Shopify?**
+```sql
+WITH TotalRetailSales AS (
+    SELECT 
+        SUM(CAST(sales AS BIGINT)) AS total_retail_sales
+    FROM clean_weekly_sales
+    WHERE platform = 'Retail'
+)
+SELECT 
+    age_band, 
+    demographic, 
+    SUM(CAST(sales AS BIGINT)) AS total_sales,
+    CAST(ROUND(100.0 * SUM(CAST(sales AS BIGINT)) / (SELECT total_retail_sales FROM TotalRetailSales), 2) AS DECIMAL(5,2)) AS percent_contribution
+FROM clean_weekly_sales
+WHERE platform = 'Retail'
+GROUP BY age_band, demographic
+ORDER BY total_sales DESC;
+
+```
+| age_band      | demographic | total_sales   | percent_contribution |
+|---------------|-------------|---------------|-----------------------|
+| unknown       | unknown     | 16,067,285,533| 40.52                |
+| Retirees      | Families    | 6,634,686,916 | 16.73                |
+| Retirees      | Couples     | 6,370,580,014 | 16.07                |
+| Middle Aged   | Families    | 4,354,091,554 | 10.98                |
+| Young Adults  | Couples     | 2,602,922,797 | 6.56                 |
+| Middle Aged   | Couples     | 1,854,160,330 | 4.68                 |
+| Young Adults  | Families    | 1,770,889,293 | 4.47                 |
+
+
+## 9. **Can we use the avg_transaction column to find the average transaction size for each year for Retail vs Shopify?**
+- The avg_transaction column cannot be used directly to calculate the average transaction size for each year for Retail vs Shopify because it is already calculated at a more granular level (e.g., per row) and does not account for the total transactions and sales across all rows for a given platform and year.
+
+- To correctly calculate the average transaction size for each year and platform, we must use the sum of sales divided by the sum of transactions for that platform and year.
 
 ### Query:
 ```sql
