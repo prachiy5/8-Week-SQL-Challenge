@@ -79,10 +79,10 @@ The repository is structured to include separate solution files for each part of
 
 ## 🚀 **Next Steps**
 Ready to dive in? Check out the solution files for each part:
-- [Part 1: Data Cleansing Steps](Solutions/Part-1-Data-Cleansing/README.md)
-- [Part 2: Data Exploration](Solutions/Part-2-Data-Exploration/README.md)
-- [Part 3: Before & After Analysis](Solutions/Part-3-Before-After-Analysis/README.md)
-- [Part 4: Bonus Analysis](Solutions/Part-4-Bonus-Analysis/README.md)
+- [Part 1: Data Cleansing Steps]([Solutions/Part-1-Data-Cleansing/README.md](https://github.com/prachiy5/8-Week-SQL-Challenge/tree/main/Case%20Study%20%235%20-%20Data%20Mart/Data%20Cleaning))
+- [Part 2: Data Exploration]([Solutions/Part-2-Data-Exploration/README.md](https://github.com/prachiy5/8-Week-SQL-Challenge/tree/main/Case%20Study%20%235%20-%20Data%20Mart/Data%20Exploration))
+- [Part 3: Before & After Analysis]([Solutions/Part-3-Before-After-Analysis/README.md](https://github.com/prachiy5/8-Week-SQL-Challenge/tree/main/Case%20Study%20%235%20-%20Data%20Mart/Before%20%26%20After%20Analysis))
+
 
 ---
 
