@@ -12,11 +12,11 @@ Currently, I’m working on the solutions for these case studies. As I progress,
 ### 📂 Case Studies
 Here are the case studies included in the challenge. Click on the links below to navigate to the corresponding folders and explore my work:
 
-1. [Case Study #1: Danny's Diner](./8-Week-SQL-Challenge/Case%20Study%20%231%20-%20Danny's%20Diner/)
-2. [Case Study #2: Pizza Runner](./8-Week-SQL-Challenge/Case%20Study%20%232%20-%20Pizza%20Runner/) *(coming soon)*
-3. [Case Study #3: Foodie-Fi](./8-Week-SQL-Challenge/Case%20Study%20%233%20-%20Foodie-Fi/) *(coming soon)*
-4. [Case Study #4: Data Bank](./8-Week-SQL-Challenge/Case%20Study%20%234%20-%20Data%20Bank/) *(coming soon)*
-5. [Case Study #5: Data Mart](./8-Week-SQL-Challenge/Case%20Study%20%235%20-%20Data%20Mart/) *(coming soon)*
+1. [Case Study #1: Danny's Diner](https://github.com/prachiy5/8-Week-SQL-Challenge/tree/main/Case%20Study%20%231--%20Danny's%20Diner)
+2. [Case Study #2: Pizza Runner](https://github.com/prachiy5/8-Week-SQL-Challenge/tree/main/Case%20Study%20%232%20-%20Pizza%20Run)
+3. [Case Study #3: Foodie-Fi](https://github.com/prachiy5/8-Week-SQL-Challenge/tree/main/Case%20Study%20%233%20-%20Foodie-Fi)
+4. [Case Study #4: Data Bank](https://github.com/prachiy5/8-Week-SQL-Challenge/tree/main/Case%20Study%20%234%20-%20Data%20Bank)
+5. [Case Study #5: Data Mart](https://github.com/prachiy5/8-Week-SQL-Challenge/tree/main/Case%20Study%20%235%20-%20Data%20Mart)
 6. [Case Study #6: Clique Bait](./8-Week-SQL-Challenge/Case%20Study%20%236%20-%20Clique%20Bait/) *(coming soon)*
 7. [Case Study #7: Balanced Tree](./8-Week-SQL-Challenge/Case%20Study%20%237%20-%20Balanced%20Tree/) *(coming soon)*
 8. [Case Study #8: Fresh Segments](./8-Week-SQL-Challenge/Case%20Study%20%238%20-%20Fresh%20Segments/) *(coming soon)*
