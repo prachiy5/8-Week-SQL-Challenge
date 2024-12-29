@@ -99,10 +99,10 @@ Clique_Bait_Case_Study/
 ```
 ### **Quick Links to Each Section** 🔗
 
-- [Enterprise Relationship Diagram (ERD)](./ERD/README.md)
-- [Digital Analysis](./Digital_Analysis/README.md)
-- [Product Funnel Analysis](./Product_Funnel_Analysis/README.md)
-- [Campaign Analysis](./Campaign_Analysis/README.md)
+- [Enterprise Relationship Diagram (ERD)](https://github.com/prachiy5/8-Week-SQL-Challenge/tree/main/Case%20Study%20%236%20-%20Clique%20Bait/Enterprise%20Relationship%20Diagram)
+- [Digital Analysis](https://github.com/prachiy5/8-Week-SQL-Challenge/tree/main/Case%20Study%20%236%20-%20Clique%20Bait/Digital%20Analysis)
+- [Product Funnel Analysis](https://github.com/prachiy5/8-Week-SQL-Challenge/tree/main/Case%20Study%20%236%20-%20Clique%20Bait/Product%20Funnel%20Analysis)
+- [Campaign Analysis](https://github.com/prachiy5/8-Week-SQL-Challenge/tree/main/Case%20Study%20%236%20-%20Clique%20Bait/Campaigns%20Analysis)
 
 
 ---
