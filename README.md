@@ -30,6 +30,8 @@ This challenge provides an excellent opportunity to:
 - Gain insights into data-driven decision-making.
 
 ---
+**Note:** All queries have been written in **MS SQL Server**. If you are using a different tool, you may need to adjust the syntax and functions accordingly, as some features might differ between SQL implementations.
+---
 
 ## 📌 Note About My Solutions
 Hello visitors,
