@@ -18,7 +18,7 @@ Here are the case studies included in the challenge. Click on the links below to
 4. [Case Study #4: Data Bank](https://github.com/prachiy5/8-Week-SQL-Challenge/tree/main/Case%20Study%20%234%20-%20Data%20Bank)
 5. [Case Study #5: Data Mart](https://github.com/prachiy5/8-Week-SQL-Challenge/tree/main/Case%20Study%20%235%20-%20Data%20Mart)
 6. [Case Study #6: Clique Bait](https://github.com/prachiy5/8-Week-SQL-Challenge/tree/main/Case%20Study%20%236%20-%20Clique%20Bait)
-7. [Case Study #7: Balanced Tree](./8-Week-SQL-Challenge/Case%20Study%20%237%20-%20Balanced%20Tree/) *(coming soon)*
+7. [Case Study #7: Balanced Tree](https://github.com/prachiy5/8-Week-SQL-Challenge/tree/main/Case%20Study%20%237%20-%20Balanced%20Tree%20Clothing%20Co.)
 8. [Case Study #8: Fresh Segments](./8-Week-SQL-Challenge/Case%20Study%20%238%20-%20Fresh%20Segments/) *(coming soon)*
 
 ---
