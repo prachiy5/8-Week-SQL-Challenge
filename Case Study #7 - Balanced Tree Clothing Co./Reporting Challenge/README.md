@@ -382,23 +382,23 @@ ORDER BY occurrence_count DESC;
 
 ### 📊 Instructions for Running and Automating the Report
 
-- 🗓️ Use `@start_date` and `@end_date` variables to set the reporting period for the desired month. Update these dates before running the script.
+🗓️ Use `@start_date` and `@end_date` variables to set the reporting period for the desired month. Update these dates before running the script.
 
-- 📁 The script is divided into sections like **High-Level Sales Analysis**, **Transaction Analysis**, and **Product Analysis**. Each section calculates specific metrics.
+📁 The script is divided into sections like **High-Level Sales Analysis**, **Transaction Analysis**, and **Product Analysis**. Each section calculates specific metrics.
 
-- 🤖 To automate the script, schedule it using SQL Job Scheduler or similar tools. Set the job to run at the start of each month for the previous month’s data.
+🤖 To automate the script, schedule it using SQL Job Scheduler or similar tools. Set the job to run at the start of each month for the previous month’s data.
 
-- ✅ Validate the results for a few months manually before scheduling the script. This ensures accuracy in outputs like percentiles and aggregations.
+✅ Validate the results for a few months manually before scheduling the script. This ensures accuracy in outputs like percentiles and aggregations.
 
-- 📝 Store the output of each section in separate tables for record-keeping and future reference. Create a summary table for quick executive review.
+📝 Store the output of each section in separate tables for record-keeping and future reference. Create a summary table for quick executive review.
 
-- 🔁 The script is designed to be reusable. To analyze a different month, just update the date variables.
+🔁 The script is designed to be reusable. To analyze a different month, just update the date variables.
 
-- 💬 Before finalizing the report, get feedback from stakeholders (e.g., the CFO or merchandising team) to ensure the metrics meet their expectations.
+💬 Before finalizing the report, get feedback from stakeholders (e.g., the CFO or merchandising team) to ensure the metrics meet their expectations.
 
-- ⚙️ Check the database for proper indexing on key tables like `sales` and `product_details` to optimize script performance.
+⚙️ Check the database for proper indexing on key tables like `sales` and `product_details` to optimize script performance.
 
-- 📈 Use the outputs to track trends over time and identify areas for business improvements.
+📈 Use the outputs to track trends over time and identify areas for business improvements.
 
-- 🔄 Run the script periodically to keep the metrics up-to-date and relevant.
+🔄 Run the script periodically to keep the metrics up-to-date and relevant.
 
